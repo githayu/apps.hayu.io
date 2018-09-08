@@ -1,0 +1,20 @@
+.unicodeDialogPopover {
+  height: 300px;
+  overflow: auto;
+}
+
+.root {
+  padding: 32px;
+
+  label {
+    min-width: 5rem;
+  }
+}
+
+.buttonGroup {
+  > button {
+    + button {
+      margin-left: 16px;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import * as express from 'express'
+import * as path from 'path'
 
 export const app = express()
 
@@ -16,7 +17,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('webpack-hot-middleware')(compiler))
 }
 
-app.use(express.static('./public'))
-app.get('/about', (req, res) => res.send('Hello World'))
+app.all('/random.html', (req, res) => res.sendStatus(404))
 
-app.listen(3000)
+app.use(
+  express.static(path.resolve(__dirname, '../dist/'), {
+    extensions: ['html'],
+  })
+)
+
+app.listen(process.env.PORT || 3000)

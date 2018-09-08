@@ -4,7 +4,7 @@ const CleanWebpackPlgin = require('clean-webpack-plugin')
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname, '../dist/public'),
+    path: path.resolve(__dirname, '../dist'),
     chunkFilename: 'js/[id].chunk.js',
     publicPath: '/',
   },
@@ -39,12 +39,23 @@ module.exports = {
           },
         },
       },
+      {
+        exclude: [/\.(j|t)sx?$/, /\.html$/, /\.json$/, /\.s?css$/],
+        loader: require.resolve('file-loader'),
+        options: {
+          name: 'assets/[name].[hash:8].[ext]',
+        },
+      },
     ],
   },
   plugins: [
-    new CleanWebpackPlgin(['dist']),
+    new CleanWebpackPlgin([path.resolve(__dirname, '../dist/')], {
+      allowExternal: true,
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
+      filename: 'random.html',
+      chunks: ['app'],
     }),
   ],
   optimization: {

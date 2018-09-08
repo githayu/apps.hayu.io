@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "rootDirs": ["src"],
+    "baseUrl": "./",
+    "rootDir": "src",
     "outDir": "dist",
     "sourceMap": true,
     "noImplicitAny": true,
@@ -9,6 +9,11 @@
     "target": "es5",
     "lib": ["es7", "dom"],
     "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
     "paths": {
       "src/*": ["./src/*"],
       "srv/*": ["./server/*"]

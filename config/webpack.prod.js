@@ -1,3 +1,4 @@
+const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const config = require('./webpack.config')
@@ -24,6 +25,31 @@ module.exports = webpackMerge(config, {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')({
+                  browsers: ['last 2 version'],
+                }),
+              ],
+            },
+          },
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [
           {
@@ -33,10 +59,20 @@ module.exports = webpackMerge(config, {
             loader: 'css-loader',
             options: {
               modules: true,
-              importLoaders: 1,
+              importLoaders: 2,
               minimize: true,
-              sourceMap: true,
-              localIdentName: '[folder]-[hash:base64:5]',
+              sourceMap: false,
+              localIdentName: '[folder]-[md5:hash:hex:8]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')({
+                  browsers: ['last 2 version'],
+                }),
+              ],
             },
           },
           {
