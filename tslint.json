@@ -1,15 +1,14 @@
 {
   "defaultSeverity": "error",
-  "extends": [
-    "tslint:latest",
-    "tslint-config-prettier"
-  ],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
   "rules": {
     "interface-over-type-literal": false,
     "object-literal-sort-keys": false,
     "no-implicit-dependencies": [true, "dev"],
     "no-boolean-literal-compare": false,
-    "variable-name": false
+    "variable-name": false,
+    "no-var-requires": false,
+    "no-console": false
   },
   "rulesDirectory": ["tslint-plugin-prettier"]
 }

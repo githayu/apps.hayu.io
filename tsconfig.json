@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "rootDirs": [
-      "src",
-    ],
+    "rootDirs": ["src"],
     "outDir": "dist",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "es5",
-    "lib": ["es7","dom"],
-    "jsx": "react"
+    "lib": ["es7", "dom"],
+    "jsx": "react",
+    "paths": {
+      "src/*": ["./src/*"],
+      "srv/*": ["./server/*"]
+    }
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "./server/**/*"]
 }
