@@ -39,7 +39,6 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-plugin-prettier": "^1.3.0",
-    "typescript": "^3.0.3",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-middleware": "^3.2.0",
@@ -55,13 +54,19 @@
     "lodash": "^4.17.10",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "ts-node": "^7.0.1"
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
   },
-  "name": "typescript-webpack-express-boilerplate",
+  "name": "apps-hayu-io",
   "version": "1.0.0",
   "main": "server/index.js",
-  "repository": "git@bitbucket.org:hayu/typescript-webpack-express-boilerplate.git",
+  "repository": "https://git.heroku.com/apps-hayu-io.git",
   "author": "Hayu <admin@hayu.io>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "engines": {
+    "node": "10.9.x",
+    "npm": "6.2.x",
+    "yarn": "1.9.x"
+  }
 }
