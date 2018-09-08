@@ -2,7 +2,9 @@
   "scripts": {
     "start": "webpack --mode development --progress",
     "build": "webpack --mode production",
-    "server": "NODE_ENV=development ts-node ./server/"
+    "server": "NODE_ENV=development ts-node ./server/",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -33,7 +35,12 @@
     "webpack": "^4.17.1",
     "webpack-dev-middleware": "^3.2.0",
     "webpack-hot-middleware": "^2.23.1",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0"
   },
   "dependencies": {
     "express": "^4.16.3",
