@@ -3,13 +3,12 @@ import * as path from 'path'
 
 export const app = express()
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')
   const compiler = webpack(require('../config/webpack.dev'))
 
   app.use(
     require('webpack-dev-middleware')(compiler, {
-      noInfo: true,
       publicPath: '/',
     })
   )
@@ -17,12 +16,10 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('webpack-hot-middleware')(compiler))
 }
 
-app.all('/random.html', (req, res) => res.sendStatus(404))
+app.use('/random.html', (req, res) => res.redirect('/random'))
 
-app.use(
-  express.static(path.resolve(__dirname, '../dist/'), {
-    extensions: ['html'],
-  })
-)
+express.static(path.resolve(__dirname, '../dist/'), {
+  extensions: ['html'],
+})
 
 app.listen(process.env.PORT || 3000)

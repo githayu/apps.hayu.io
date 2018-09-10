@@ -1,8 +1,12 @@
 const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
-const config = require('./webpack.config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const {
+  default: config,
+  cssLoaderOption,
+  postCssLoaderOptions,
+} = require('./webpack.config')
 
 module.exports = webpackMerge(config, {
   mode: 'development',
@@ -23,7 +27,7 @@ module.exports = webpackMerge(config, {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-      chunkFilename: 'css/[id].css',
+      chunkFilename: 'css/[id].chunk.css',
     }),
   ],
   module: {
@@ -43,13 +47,7 @@ module.exports = webpackMerge(config, {
           },
           {
             loader: 'postcss-loader',
-            options: {
-              plugins: [
-                require('autoprefixer')({
-                  browsers: ['last 2 version'],
-                }),
-              ],
-            },
+            options: postCssLoaderOptions,
           },
         ],
       },
@@ -62,22 +60,16 @@ module.exports = webpackMerge(config, {
           {
             loader: 'css-loader',
             options: {
+              ...cssLoaderOption,
               modules: true,
               importLoaders: 2,
               minimize: false,
               sourceMap: true,
-              localIdentName: '[folder]-[md5:hash:hex:8]',
             },
           },
           {
             loader: 'postcss-loader',
-            options: {
-              plugins: [
-                require('autoprefixer')({
-                  browsers: ['last 2 version'],
-                }),
-              ],
-            },
+            options: postCssLoaderOptions,
           },
           {
             loader: 'sass-loader',

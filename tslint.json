@@ -7,6 +7,5 @@
     "no-shadowed-variable": false,
     "no-console": false,
     "no-var-requires": false
-  },
-  "rulesDirectory": ["tslint-plugin-prettier"]
+  }
 }
