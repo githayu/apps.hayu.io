@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(require('webpack-hot-middleware')(compiler))
 }
 
-app.use('/random.html', (req, res) => res.redirect('/random'))
+app.get('/random.html', (req, res) => res.redirect('/random'))
 
 express.static(path.resolve(__dirname, '../dist/'), {
   extensions: ['html'],
