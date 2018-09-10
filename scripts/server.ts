@@ -18,8 +18,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.get('/random.html', (req, res) => res.redirect('/random'))
 
-express.static(path.resolve(__dirname, '../dist/'), {
-  extensions: ['html'],
-})
+app.use(
+  express.static(path.resolve(__dirname, '../dist/'), {
+    extensions: ['html'],
+  })
+)
 
 app.listen(process.env.PORT || 3000)
