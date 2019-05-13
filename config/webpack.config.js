@@ -3,18 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlgin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-module.exports.cssLoaderOptions = {
-  localIdentName: '[folder]-[md5:hash:hex:8]',
-}
-
-module.exports.postCssLoaderOptions = {
-  plugins: [
-    require('autoprefixer')({
-      browsers: ['last 2 version'],
-    }),
-  ],
-}
-
 module.exports.default = {
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -22,7 +10,7 @@ module.exports.default = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json', '.css', '.scss'],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       src: path.resolve(__dirname, '../src/'),
     },
@@ -52,20 +40,10 @@ module.exports.default = {
           },
         },
       },
-      {
-        exclude: [/\.(j|t)sx?$/, /\.html$/, /\.json$/, /\.s?css$/],
-        loader: require.resolve('file-loader'),
-        options: {
-          name: '[md5:hash:8].[ext]',
-          outputPath: 'assets/',
-        },
-      },
     ],
   },
   plugins: [
-    new CleanWebpackPlgin([path.resolve(__dirname, '../dist/')], {
-      allowExternal: true,
-    }),
+    new CleanWebpackPlgin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../static/template.html'),
       filename: 'random.html',
@@ -77,9 +55,4 @@ module.exports.default = {
     }),
     new CopyWebpackPlugin([{ from: '**/*', to: './', context: 'public/' }]),
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
 }

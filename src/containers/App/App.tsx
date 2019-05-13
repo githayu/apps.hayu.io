@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { hot } from 'react-hot-loader'
+import { hot } from 'react-hot-loader/root'
 import {
   Navbar,
-  TextArea,
+  TextArea as BPTextArea,
   Checkbox,
   Dialog,
   Classes,
@@ -17,7 +17,7 @@ import {
   IRangeBlock,
   defaultBlocks,
 } from './unicode-blocks'
-import s from './App.scss'
+import styled from 'styled-components'
 
 interface IStore {
   blocks: IBlock[]
@@ -214,7 +214,7 @@ class App extends React.Component<IProps, IState> {
             this.setState({ store: { ...store, isOpenUnicodeDialog: false } })
           }
         >
-          <div className={classNames(s.blocks, Classes.DIALOG_BODY)}>
+          <div className={classNames(Classes.DIALOG_BODY)}>
             {unicodeBlocks.map((block) => (
               <Checkbox key={`${block.from}-${block.to}`} label={block.name} />
             ))}
@@ -239,7 +239,6 @@ class App extends React.Component<IProps, IState> {
 
         <TextArea
           value={store.resultStrings}
-          className={s.textArea}
           cols={20}
           rows={10}
         />
@@ -248,4 +247,10 @@ class App extends React.Component<IProps, IState> {
   }
 }
 
-export default hot(module)(App)
+const TextArea = styled(BPTextArea)`
+  margin: 0 32px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.4rem;
+`
+
+export default hot(App)

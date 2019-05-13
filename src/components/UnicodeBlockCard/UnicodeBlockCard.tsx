@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Card, Tooltip } from '@blueprintjs/core'
+import { Card as BPCard, Tooltip } from '@blueprintjs/core'
 import { AppContext } from '../../containers/App/App'
-import s from './UnicodeBlockCard.scss'
+import styled from 'styled-components';
 
 interface IProps {
   block: {
@@ -43,5 +43,30 @@ export const UnicodeBlockCard: React.SFC<IProps> = (props) => {
     </AppContext.Consumer>
   )
 }
+
+const Card = styled(BPCard)`
+  width: 200px;
+  height: 80px;
+  padding: 16px;
+  text-align: center;
+
+  > * {
+    word-break: break-all;
+    font-feature-settings: "palt";
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  h5 {
+    font-size: 1rem;
+    margin: 0 0 8px;
+  }
+
+  p {
+    margin: 0;
+    color: #c0c0c0;
+  }
+`
 
 export default UnicodeBlockCard

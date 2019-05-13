@@ -11,16 +11,15 @@ import {
 import { MultiSelect } from '@blueprintjs/select'
 import { AppContext } from 'src/containers/App/App'
 import { unicodeBlocks, defaultBlocks } from 'src/containers/App/unicode-blocks'
-import s from './Generator.scss'
+import styled from 'styled-components'
 
 export const Generator = () => {
   return (
     <AppContext.Consumer>
       {(context) =>
         context && (
-          <form
-            className={s.root}
-            onSubmit={(e) => {
+          <Root
+            onSubmit={(e: React.FormEvent) => {
               e.preventDefault()
               context.actions.generate()
             }}
@@ -47,9 +46,6 @@ export const Generator = () => {
             >
               <MultiSelect
                 items={unicodeBlocks}
-                popoverProps={{
-                  popoverClassName: s.unicodeDialogPopover,
-                }}
                 itemRenderer={(block, itemRenderer) => {
                   const chars = []
                   const interval = Math.floor((block.to - block.from) / 5)
@@ -118,15 +114,31 @@ export const Generator = () => {
               />
             </FormGroup>
 
-            <div className={s.buttonGroup}>
+            <ButtonGroup>
               <Button type="reset">リセット</Button>
               <Button type="submit" intent="primary">
                 実行
               </Button>
-            </div>
-          </form>
+            </ButtonGroup>
+          </Root>
         )
       }
     </AppContext.Consumer>
   )
 }
+
+const Root = styled.form`
+  padding: 32px;
+
+  label {
+    min-width: 5rem;
+  }
+`
+
+const ButtonGroup = styled.div`
+  > button {
+    + button {
+      margin-left: 16px;
+    }
+  }
+`
