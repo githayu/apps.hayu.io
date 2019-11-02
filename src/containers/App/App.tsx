@@ -123,7 +123,7 @@ class App extends React.Component<IProps, IState> {
       const { store } = this.state
       let result = ''
 
-      let text = [...store.blocks, ...store.defaultBlocks].reduce(
+      let text = [...store.blocks, ...store.defaultBlocks].reduce<string[]>(
         (str, block) => {
           if (isIRangeBlock(block)) {
             block.ranges.forEach((range) => {
@@ -134,7 +134,7 @@ class App extends React.Component<IProps, IState> {
                   continue
                 }
 
-                str += char
+                str.push(char)
               }
             })
           } else {
@@ -145,13 +145,13 @@ class App extends React.Component<IProps, IState> {
                 continue
               }
 
-              str += char
+              str.push(char)
             }
           }
 
           return str
         },
-        ''
+        []
       )
 
       Array.from(store.appendStrings).forEach((char) => {
@@ -159,7 +159,7 @@ class App extends React.Component<IProps, IState> {
           return
         }
 
-        text += char
+        text.push(char)
       })
 
       if (text.length) {
@@ -237,11 +237,7 @@ class App extends React.Component<IProps, IState> {
 
         <Generator />
 
-        <TextArea
-          value={store.resultStrings}
-          cols={20}
-          rows={10}
-        />
+        <TextArea value={store.resultStrings} cols={20} rows={10} />
       </AppContext.Provider>
     )
   }
@@ -249,7 +245,7 @@ class App extends React.Component<IProps, IState> {
 
 const TextArea = styled(BPTextArea)`
   margin: 0 32px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 1.4rem;
 `
 

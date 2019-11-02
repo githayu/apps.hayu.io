@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Card as BPCard, Tooltip } from '@blueprintjs/core'
 import { AppContext } from '../../containers/App/App'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 interface IProps {
   block: {
@@ -28,7 +28,6 @@ export const UnicodeBlockCard: React.SFC<IProps> = (props) => {
         context && (
           <Card
             interactive={true}
-            className={s.card}
             onClick={() => context.actions.toggleBlock(block)}
             {...others}
           >
@@ -52,7 +51,7 @@ const Card = styled(BPCard)`
 
   > * {
     word-break: break-all;
-    font-feature-settings: "palt";
+    font-feature-settings: 'palt';
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
