@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "webpack --config ./webpack/webpack.dev.backend.js",
+    "dev": "webpack --config ./webpack/webpack.dev.js",
     "start": "node ./dist/backend/server.js",
     "build": "yarn build:backend && yarn build:frontend",
     "build:backend": "webpack --config ./webpack/webpack.prod.js --config-name backend",
