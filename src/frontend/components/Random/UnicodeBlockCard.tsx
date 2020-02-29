@@ -1,6 +1,6 @@
-import * as React from 'react'
+import React from 'react'
 import { Card as BPCard, Tooltip } from '@blueprintjs/core'
-import { AppContext } from '../../containers/App/App'
+import { AppContext } from './Random'
 import styled from 'styled-components'
 
 interface IProps {
@@ -11,7 +11,13 @@ interface IProps {
   }
 }
 
-export const UnicodeBlockCard: React.SFC<IProps> = (props) => {
+export const UnicodeBlockCard: React.FC<IProps> = (props) => {
+  const context = React.useContext(AppContext)
+
+  if (!context) {
+    return null
+  }
+
   const { block, ...others } = props
   const chars = []
   const interval = Math.floor((block.to - block.from) / 10)
@@ -23,23 +29,17 @@ export const UnicodeBlockCard: React.SFC<IProps> = (props) => {
   const description = chars.slice(0, 10).join(' ')
 
   return (
-    <AppContext.Consumer>
-      {(context) =>
-        context && (
-          <Card
-            interactive={true}
-            onClick={() => context.actions.toggleBlock(block)}
-            {...others}
-          >
-            <h5>
-              <Tooltip content={block.name}>{block.name}</Tooltip>
-            </h5>
+    <Card
+      interactive={true}
+      onClick={() => context.actions.toggleBlock(block)}
+      {...others}
+    >
+      <h5>
+        <Tooltip content={block.name}>{block.name}</Tooltip>
+      </h5>
 
-            <p>{description}</p>
-          </Card>
-        )
-      }
-    </AppContext.Consumer>
+      <p>{description}</p>
+    </Card>
   )
 }
 
@@ -67,5 +67,3 @@ const Card = styled(BPCard)`
     color: #c0c0c0;
   }
 `
-
-export default UnicodeBlockCard

@@ -1,27 +1,3 @@
-/*
-
-Wikipadia コードブロック抽出プログラム
-https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF_(Unicode)
-
-JSON.stringify(
-  [...$0.querySelectorAll("tr")].map(tr => {
-    const range = tr.querySelector('td[data-sort-value^="A&"]');
-
-    if (!range) return;
-
-    const name = range.nextElementSibling.firstElementChild.innerText;
-
-    const [from, to] = range.innerText.split("..");
-
-    return {
-      name,
-      from: parseInt(from.replace("U+", "0x")),
-      to: parseInt(to.replace("U+", "0x"))
-    };
-  })
-);
-*/
-
 export interface IBlock {
   name: string
   from: number
@@ -54,6 +30,31 @@ export const defaultBlocks: IRangeBlock[] = [
   },
 ]
 
+/**
+ * Unicode Blocks
+ *
+ * Wikipadia コードブロック抽出プログラム
+ * @see {@link https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF_(Unicode)}
+ *
+ * ```js
+ * JSON.stringify(
+ *   [...$0.querySelectorAll("tr")].map(tr => {
+ *     const range = tr.querySelector('td[data-sort-value^="A&"]')
+ *
+ *     if (!range) return
+ *
+ *     const name = range.nextElementSibling.firstElementChild.innerText
+ *     const [from, to] = range.innerText.split("..")
+ *
+ *     return {
+ *       name,
+ *       from: parseInt(from.replace("U+", "0x")),
+ *       to: parseInt(to.replace("U+", "0x")),
+ *     }
+ *   })
+ * )
+ * ```
+ */
 export const unicodeBlocks: IBlock[] = [
   { name: '基本ラテン文字', from: 0, to: 127 },
   { name: 'ラテン1補助', from: 128, to: 255 },

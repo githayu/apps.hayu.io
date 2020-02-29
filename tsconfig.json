@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
+    "strict": true,
     "baseUrl": "./",
     "outDir": "dist",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
-    "lib": ["es7", "dom"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
     "jsx": "react",
-    "allowJs": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "allowJs": true,
     "paths": {
-      "src/*": ["./src/*"],
-      "srv/*": ["./scripts/*"]
+      "src/*": ["./src/*"]
     }
   },
-  "include": ["./src/**/*", "./scripts/**/*"]
+  "include": ["./src/**/*"]
 }
