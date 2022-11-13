@@ -1,42 +1,24 @@
-/** @type import('eslint').Linter.Config */
+/** @type {import('eslint/lib/shared/types').ConfigData} */
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-  ],
-  plugins: ['react-hooks'],
+  extends: ['next/core-web-vitals', 'plugin:sort/recommended', 'prettier'],
   parserOptions: {
+    ecmaVersion: 2022,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-    useJSXTextNode: true,
+    project: './tsconfig.json',
   },
-  env: {
-    browser: true,
-    node: true,
-    es6: true,
-  },
-  globals: {
-    PRODUCTION: true,
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  ignorePatterns: ['*.js'],
+  plugins: ['sort', 'better-styled-components', 'deprecation'],
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        semi: false,
-        trailingComma: 'es5',
-        arrowParens: 'always',
-      },
-    ],
+    'deprecation/deprecation': 'warn',
+    'better-styled-components/sort-declarations-alphabetically': 'warn',
+    'react-hooks/exhaustive-deps': 'off',
+    'import/no-anonymous-default-export': 'off',
+    'react/display-name': 'off',
+    'react/jsx-sort-props': 'warn',
+    'react/no-children-prop': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/self-closing-comp': 'error',
+    'sort/type-properties': 'warn',
+    'jsx-a11y/alt-text': 'off',
   },
 }

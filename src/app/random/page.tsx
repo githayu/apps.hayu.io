@@ -1,40 +1,38 @@
-import React from 'react'
-import {
-  Navbar,
-  TextArea as BPTextArea,
-  Checkbox,
-  Dialog,
-  Classes,
-  Button,
-} from '@blueprintjs/core'
-import { isEqual } from 'lodash-es'
-import { Generator } from 'src/frontend/components'
-import {
-  unicodeBlocks,
-  IBlock,
-  IRangeBlock,
-  defaultBlocks,
-} from './unicode-blocks'
-import styled from 'styled-components'
+'use client'
 
-interface IState {
-  /** 生成対象ブロック */
-  blocks: IBlock[]
-  /** 汎用文字列 */
-  defaultBlocks: IRangeBlock[]
+import { defaultBlocks, Generator, IBlock, IRangeBlock, unicodeBlocks } from '.'
+import {
+  Button,
+  Checkbox,
+  Classes,
+  Dialog,
+  Navbar,
+  TextArea,
+} from '@blueprintjs/core'
+import React from 'react'
+
+type IState = {
   /** 追加文字列 */
   appendStrings: string
+  /** 生成対象ブロック */
+  blocks: IBlock[]
   /** 生成文字数 */
   charactersCount: number
   /** 生成回数 */
   creationCount: number
-  /** 生成文字列 */
-  resultStrings: string
+  /** 汎用文字列 */
+  defaultBlocks: IRangeBlock[]
   /** 生成対象ブロック追加ダイアログ */
   isOpenUnicodeDialog: boolean
+  /** 生成文字列 */
+  resultStrings: string
 }
 
-interface IActions {
+type IActions = {
+  /** 文字列生成 */
+  generate(): void
+  /** リセット */
+  reset(): void
   /** ユニコードブロックの切替 */
   toggleBlock(block: IBlock | IRangeBlock): void
   /** 追加文字列更新 */
@@ -45,30 +43,26 @@ interface IActions {
   updateCreationCount(value: number): void
   /** 生成対象ブロック追加ダイアログ更新 */
   updateUnicodeDialog(value: boolean): void
-  /** 文字列生成 */
-  generate(): void
-  /** リセット */
-  reset(): void
 }
 
-interface IContext {
-  state: IState
+type IContext = {
   actions: IActions
+  state: IState
 }
 
 const initialStore: IState = {
-  isOpenUnicodeDialog: false,
-  blocks: [],
-  defaultBlocks: defaultBlocks.slice(0, 3),
   appendStrings: '',
+  blocks: [],
   charactersCount: 10,
   creationCount: 5,
+  defaultBlocks: defaultBlocks.slice(0, 3),
+  isOpenUnicodeDialog: false,
   resultStrings: '',
 }
 
 export const AppContext = React.createContext<IContext | null>(null)
 
-export const RandomApp = () => {
+export default function RandomPage() {
   const [state, setState] = React.useState<IState>(initialStore)
 
   /**
@@ -80,7 +74,9 @@ export const RandomApp = () => {
       const nextBlocks = [
         ...(isRangeBlock ? state.defaultBlocks : state.blocks),
       ]
-      const findIndex = nextBlocks.findIndex((i) => isEqual(i, block))
+      const findIndex = nextBlocks.findIndex(
+        (i) => JSON.stringify(i) === JSON.stringify(block)
+      )
 
       findIndex === -1
         ? nextBlocks.push(block)
@@ -206,16 +202,16 @@ export const RandomApp = () => {
   return (
     <AppContext.Provider
       value={{
-        state,
         actions: {
+          generate,
+          reset,
           toggleBlock,
           updateAppendStrings,
           updateCharacterCount,
           updateCreationCount,
           updateUnicodeDialog,
-          generate,
-          reset,
         },
+        state,
       }}
     >
       <Navbar>
@@ -226,10 +222,10 @@ export const RandomApp = () => {
 
       <Dialog
         isOpen={state.isOpenUnicodeDialog}
-        title="Unicode Block 追加"
         onClose={() =>
           setState((prev) => ({ ...prev, isOpenUnicodeDialog: false }))
         }
+        title="Unicode Block 追加"
       >
         <div className={Classes.DIALOG_BODY}>
           {unicodeBlocks.map((block) => (
@@ -252,13 +248,12 @@ export const RandomApp = () => {
 
       <Generator />
 
-      <TextArea value={state.resultStrings} cols={20} rows={10} />
+      <TextArea
+        className="font-mono text-xl mx-8 resize"
+        cols={20}
+        rows={10}
+        value={state.resultStrings}
+      />
     </AppContext.Provider>
   )
 }
-
-const TextArea = styled(BPTextArea)`
-  margin: 0 32px;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.4rem;
-`

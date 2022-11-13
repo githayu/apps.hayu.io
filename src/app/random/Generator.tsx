@@ -1,19 +1,15 @@
-import React from 'react'
+import { defaultBlocks, unicodeBlocks } from '.'
 import {
+  Button,
+  Checkbox,
   FormGroup,
   InputGroup,
   NumericInput,
-  MenuItem,
-  Button,
-  Checkbox,
 } from '@blueprintjs/core'
-import { MultiSelect } from '@blueprintjs/select'
-import { AppContext } from 'src/frontend/components/Random/Random'
-import {
-  unicodeBlocks,
-  defaultBlocks,
-} from 'src/frontend/components/Random/unicode-blocks'
-import styled from 'styled-components'
+import { MenuItem2 } from '@blueprintjs/popover2'
+import { MultiSelect2 } from '@blueprintjs/select'
+import React from 'react'
+import { AppContext } from './page'
 
 export const Generator = () => {
   const context = React.useContext(AppContext)
@@ -23,21 +19,22 @@ export const Generator = () => {
   }
 
   return (
-    <Root
+    <form
+      className="p-8 [&_label]:min-w-[5rem]"
+      onReset={context.actions.reset}
       onSubmit={(e: React.FormEvent) => {
         e.preventDefault()
         context.actions.generate()
       }}
-      onReset={context.actions.reset}
     >
-      <FormGroup label="汎用文字" inline={true}>
+      <FormGroup inline={true} label="汎用文字">
         {defaultBlocks.map((block, i) => {
           return (
             <Checkbox
+              checked={context.state.defaultBlocks.includes(block)}
+              inline={true}
               key={`generator-main-${i}`}
               label={block.name}
-              inline={true}
-              checked={context.state.defaultBlocks.includes(block)}
               onChange={() => context.actions.toggleBlock(block)}
             />
           )
@@ -45,12 +42,11 @@ export const Generator = () => {
       </FormGroup>
 
       <FormGroup
-        label="Unicode"
-        inline={true}
         helperText="各ブロックから文字列を生成可能にします。"
+        inline={true}
+        label="Unicode"
       >
-        <MultiSelect
-          items={unicodeBlocks}
+        <MultiSelect2
           itemRenderer={(block, itemRenderer) => {
             const chars = []
             const interval = Math.floor((block.to - block.from) / 5)
@@ -60,81 +56,67 @@ export const Generator = () => {
             }
 
             return (
-              <MenuItem
-                key={`${block.from}-${block.to}`}
-                text={block.name}
+              <MenuItem2
                 icon={context.state.blocks.includes(block) ? 'tick' : 'blank'}
+                key={`${block.from}-${block.to}`}
                 label={chars.slice(0, 5).join(' ')}
-                shouldDismissPopover={false}
                 onClick={itemRenderer.handleClick}
+                shouldDismissPopover={false}
+                text={block.name}
               />
             )
           }}
+          items={unicodeBlocks}
           onItemSelect={(block) => {
             context.actions.toggleBlock(block)
           }}
-          tagRenderer={(block) => {
-            return block.name
-          }}
+          popoverProps={{ transitionDuration: 0 }}
           selectedItems={context.state.blocks}
           tagInputProps={{
             onRemove: (value, index) => {
               context.actions.toggleBlock(context.state.blocks[index])
             },
           }}
-        />
-      </FormGroup>
-      <FormGroup
-        label="追加文字"
-        inline={true}
-        helperText="任意の文字を複数追加できます。区切り文字は不要です。"
-      >
-        <InputGroup
-          value={context.state.appendStrings}
-          onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => {
-            return context.actions.updateAppendStrings(target.value)
+          tagRenderer={(block) => {
+            return block.name
           }}
         />
       </FormGroup>
+      <FormGroup
+        helperText="任意の文字を複数追加できます。区切り文字は不要です。"
+        inline={true}
+        label="追加文字"
+      >
+        <InputGroup
+          onChange={({ target }: React.ChangeEvent<HTMLInputElement>) => {
+            return context.actions.updateAppendStrings(target.value)
+          }}
+          value={context.state.appendStrings}
+        />
+      </FormGroup>
 
-      <FormGroup label="生成回数" inline={true}>
+      <FormGroup inline={true} label="生成回数">
         <NumericInput
+          onValueChange={(int) => context.actions.updateCreationCount(int)}
           type="number"
           value={String(context.state.creationCount)}
-          onValueChange={(int) => context.actions.updateCreationCount(int)}
         />
       </FormGroup>
 
-      <FormGroup label="文字数" inline={true}>
+      <FormGroup inline={true} label="文字数">
         <NumericInput
+          onValueChange={(int) => context.actions.updateCharacterCount(int)}
           type="number"
           value={String(context.state.charactersCount)}
-          onValueChange={(int) => context.actions.updateCharacterCount(int)}
         />
       </FormGroup>
 
-      <ButtonGroup>
+      <div className="[&>button+button]:ml-4">
         <Button type="reset">リセット</Button>
-        <Button type="submit" intent="primary">
+        <Button intent="primary" type="submit">
           実行
         </Button>
-      </ButtonGroup>
-    </Root>
+      </div>
+    </form>
   )
 }
-
-const Root = styled.form`
-  padding: 32px;
-
-  label {
-    min-width: 5rem;
-  }
-`
-
-const ButtonGroup = styled.div`
-  > button {
-    + button {
-      margin-left: 16px;
-    }
-  }
-`
