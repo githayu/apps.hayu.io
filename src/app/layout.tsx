@@ -1,6 +1,8 @@
 'use client'
 
 import './globals.css'
+// tailwindだとフォントのビルド時にエラーになるのでNextでロードしておく
+import '@blueprintjs/icons/lib/css/blueprint-icons.css'
 import cx from 'classnames'
 import Link from 'next/link'
 import Script from 'next/script'

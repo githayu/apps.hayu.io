@@ -1,7 +1,6 @@
-@import url('@blueprintjs/core/lib/css/blueprint.css');
-@import url('@blueprintjs/icons/lib/css/blueprint-icons.css');
-@import url('@blueprintjs/popover2/lib/css/blueprint-popover2.css');
-@import url('@blueprintjs/select/lib/css/blueprint-select.css');
+@import '@blueprintjs/core/lib/css/blueprint.css';
+@import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
+@import '@blueprintjs/select/lib/css/blueprint-select.css';
 
 @tailwind base;
 @tailwind components;
