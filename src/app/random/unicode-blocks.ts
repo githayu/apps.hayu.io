@@ -1,10 +1,10 @@
-export type IBlock = {
+export type Block = {
   from: number
   name: string
   to: number
 }
 
-export type IRangeBlock = {
+export type RangeBlock = {
   name: string
   ranges: Array<{
     from: number
@@ -12,7 +12,7 @@ export type IRangeBlock = {
   }>
 }
 
-export const defaultBlocks: IRangeBlock[] = [
+export const defaultBlocks: RangeBlock[] = [
   { name: '数字', ranges: [{ from: 48, to: 57 }] },
   { name: '英字(大文字)', ranges: [{ from: 65, to: 90 }] },
   { name: '英字(小文字)', ranges: [{ from: 97, to: 122 }] },
@@ -55,7 +55,7 @@ export const defaultBlocks: IRangeBlock[] = [
  * )
  * ```
  */
-export const unicodeBlocks: IBlock[] = [
+export const unicodeBlocks: Block[] = [
   { from: 0, name: '基本ラテン文字', to: 127 },
   { from: 128, name: 'ラテン1補助', to: 255 },
   { from: 256, name: 'ラテン文字拡張A', to: 383 },

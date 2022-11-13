@@ -1,4 +1,4 @@
-import { defaultBlocks, unicodeBlocks } from '.'
+import { defaultBlocks, RandomContext, unicodeBlocks } from '.'
 import {
   Button,
   Checkbox,
@@ -9,10 +9,9 @@ import {
 import { MenuItem2 } from '@blueprintjs/popover2'
 import { MultiSelect2 } from '@blueprintjs/select'
 import React from 'react'
-import { AppContext } from './page'
 
 export const Generator = () => {
-  const context = React.useContext(AppContext)
+  const context = React.useContext(RandomContext)
 
   if (!context) {
     return null

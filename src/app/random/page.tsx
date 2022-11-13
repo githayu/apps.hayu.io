@@ -1,6 +1,13 @@
 'use client'
 
-import { defaultBlocks, Generator, IBlock, IRangeBlock, unicodeBlocks } from '.'
+import {
+  Block,
+  defaultBlocks,
+  Generator,
+  RandomContext,
+  RangeBlock,
+  unicodeBlocks,
+} from '.'
 import {
   Button,
   Checkbox,
@@ -11,30 +18,30 @@ import {
 } from '@blueprintjs/core'
 import React from 'react'
 
-type IState = {
+export type AppState = {
   /** 追加文字列 */
   appendStrings: string
   /** 生成対象ブロック */
-  blocks: IBlock[]
+  blocks: Block[]
   /** 生成文字数 */
   charactersCount: number
   /** 生成回数 */
   creationCount: number
   /** 汎用文字列 */
-  defaultBlocks: IRangeBlock[]
+  defaultBlocks: RangeBlock[]
   /** 生成対象ブロック追加ダイアログ */
   isOpenUnicodeDialog: boolean
   /** 生成文字列 */
   resultStrings: string
 }
 
-type IActions = {
+export type AppActions = {
   /** 文字列生成 */
   generate(): void
   /** リセット */
   reset(): void
   /** ユニコードブロックの切替 */
-  toggleBlock(block: IBlock | IRangeBlock): void
+  toggleBlock(block: Block | RangeBlock): void
   /** 追加文字列更新 */
   updateAppendStrings(value: string): void
   /** 生成文字数更新 */
@@ -45,12 +52,7 @@ type IActions = {
   updateUnicodeDialog(value: boolean): void
 }
 
-type IContext = {
-  actions: IActions
-  state: IState
-}
-
-const initialStore: IState = {
+const initialStore: AppState = {
   appendStrings: '',
   blocks: [],
   charactersCount: 10,
@@ -60,16 +62,14 @@ const initialStore: IState = {
   resultStrings: '',
 }
 
-export const AppContext = React.createContext<IContext | null>(null)
-
 export default function RandomPage() {
-  const [state, setState] = React.useState<IState>(initialStore)
+  const [state, setState] = React.useState<AppState>(initialStore)
 
   /**
    * ユニコードブロックの切替
    */
   const toggleBlock = React.useCallback(
-    (block: IBlock | IRangeBlock) => {
+    (block: Block | RangeBlock) => {
       const isRangeBlock = 'ranges' in block
       const nextBlocks = [
         ...(isRangeBlock ? state.defaultBlocks : state.blocks),
@@ -200,7 +200,7 @@ export default function RandomPage() {
   const reset = React.useCallback(() => setState(initialStore), [])
 
   return (
-    <AppContext.Provider
+    <RandomContext.Provider
       value={{
         actions: {
           generate,
@@ -254,6 +254,6 @@ export default function RandomPage() {
         rows={10}
         value={state.resultStrings}
       />
-    </AppContext.Provider>
+    </RandomContext.Provider>
   )
 }
