@@ -14,17 +14,8 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
 
   return (
     <html lang="ja">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-9MW6KE1DYC"
-        strategy="afterInteractive"
-      />
-      <Script id="ga" strategy="afterInteractive">
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-9MW6KE1DYC" />
+      <Script id="ga">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -33,6 +24,11 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
           gtag('config', 'G-9MW6KE1DYC');
         `}
       </Script>
+      <Script
+        async
+        crossOrigin="anonymous"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3203287558334935"
+      />
 
       <body
         className={cx(
