@@ -31,16 +31,15 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
       />
 
       <body
-        className={cx(
-          'bg-gray-100 dark:bg-gray-800 grid grid-rows-[1fr_auto] min-h-screen',
-          { 'bp4-dark': isDark }
-        )}
+        className={cx('bg-gray-100 dark:bg-gray-800 min-h-screen', {
+          'bp4-dark': isDark,
+        })}
       >
         {children}
 
         <footer className="text-center py-2">
           © 2012-{new Date().getFullYear()}{' '}
-          <Link href="https://hayu.io">Hayu</Link>
+          <Link href="https://curono.dev">curono</Link>
         </footer>
       </body>
     </html>
