@@ -134,7 +134,7 @@ export default function RandomPage() {
   const generate = React.useCallback(() => {
     let result = ''
 
-    let text = [...state.blocks, ...state.defaultBlocks].reduce<string[]>(
+    const text = [...state.blocks, ...state.defaultBlocks].reduce<string[]>(
       (str, block) => {
         if ('ranges' in block) {
           block.ranges.forEach((range) => {
@@ -194,6 +194,7 @@ export default function RandomPage() {
     state.charactersCount,
   ])
 
+
   /**
    * リセット
    */
@@ -229,7 +230,14 @@ export default function RandomPage() {
       >
         <div className={Classes.DIALOG_BODY}>
           {unicodeBlocks.map((block) => (
-            <Checkbox key={`${block.from}-${block.to}`} label={block.name} />
+            <Checkbox
+              checked={state.blocks.some(
+                (b) => b.from === block.from && b.to === block.to
+              )}
+              key={`${block.from}-${block.to}`}
+              label={block.name}
+              onChange={() => toggleBlock(block)}
+            />
           ))}
         </div>
 

@@ -5,9 +5,9 @@ import {
   FormGroup,
   InputGroup,
   NumericInput,
+  MenuItem,
 } from '@blueprintjs/core'
-import { MenuItem2 } from '@blueprintjs/popover2'
-import { MultiSelect2 } from '@blueprintjs/select'
+import { MultiSelect } from '@blueprintjs/select'
 import React from 'react'
 
 export const Generator = () => {
@@ -45,7 +45,7 @@ export const Generator = () => {
         inline={true}
         label="Unicode"
       >
-        <MultiSelect2
+        <MultiSelect
           itemRenderer={(block, itemRenderer) => {
             const chars = []
             const interval = Math.floor((block.to - block.from) / 5)
@@ -55,7 +55,7 @@ export const Generator = () => {
             }
 
             return (
-              <MenuItem2
+              <MenuItem
                 icon={context.state.blocks.includes(block) ? 'tick' : 'blank'}
                 key={`${block.from}-${block.to}`}
                 label={chars.slice(0, 5).join(' ')}
@@ -72,7 +72,7 @@ export const Generator = () => {
           popoverProps={{ transitionDuration: 0 }}
           selectedItems={context.state.blocks}
           tagInputProps={{
-            onRemove: (value, index) => {
+            onRemove: (_value, index) => {
               context.actions.toggleBlock(context.state.blocks[index])
             },
           }}

@@ -2,6 +2,7 @@
   "name": "apps-hayu-io",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,28 +10,31 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@blueprintjs/core": "^4.20.2",
-    "@blueprintjs/popover2": "^1.14.11",
-    "@blueprintjs/select": "^4.9.24",
-    "@types/node": "22.5.5",
-    "@types/react": "18.3.5",
-    "@types/react-dom": "18.3.0",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.2.11",
-    "next": "15.0.0-canary.155",
-    "react": "19.0.0-rc-206df66e-20240912",
-    "react-dom": "19.0.0-rc-206df66e-20240912",
-    "typescript": "5.6.2"
+    "@blueprintjs/core": "^5.19.0",
+    "@blueprintjs/popover2": "^2.1.31",
+    "@blueprintjs/select": "^5.3.20",
+    "next": "^15.3.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-better-styled-components": "^1.1.2",
-    "eslint-plugin-deprecation": "^2.0.0",
-    "eslint-plugin-sort": "^3.0.2",
-    "postcss": "^8.4.45",
-    "postcss-import": "^16.1.0",
-    "tailwindcss": "^3.4.11"
+    "@eslint/js": "^9.29.0",
+    "@next/eslint-plugin-next": "^15.3.4",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@types/node": "^24.0.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-sort": "^4.0.0",
+    "postcss": "^8.5.6",
+    "postcss-import": "^16.1.1",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.1"
   },
-  "packageManager": "yarn@4.4.1"
+  "packageManager": "yarn@4.9.2"
 }
