@@ -204,16 +204,25 @@ export default function RandomPage() {
       <Generator />
 
       <Box sx={{ px: { sm: 4, xs: 2 } }}>
-        <Box sx={{ position: 'relative', width: { sm: 240, xs: '100%' } }}>
+        <Box
+          sx={{
+            display: { sm: 'inline-block', xs: 'block' },
+            position: 'relative',
+          }}
+        >
           <TextField
-            fullWidth
             multiline
             rows={10}
             size="small"
             slotProps={{ htmlInput: { readOnly: true } }}
             sx={{
               '& .MuiInputBase-root': { pr: 5 },
-              '& textarea': { fontFamily: 'monospace' },
+              '& textarea': {
+                fontFamily: 'monospace',
+                resize: { sm: 'both', xs: 'vertical' },
+                width: { sm: 186 },
+              },
+              width: { sm: 'auto', xs: '100%' },
             }}
             value={state.resultStrings}
           />
