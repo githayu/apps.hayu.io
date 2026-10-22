@@ -7,34 +7,40 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@blueprintjs/core": "^5.19.0",
-    "@blueprintjs/popover2": "^2.1.31",
-    "@blueprintjs/select": "^5.3.20",
-    "next": "^15.3.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "@base-ui/react": "^1.9.0",
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.5.0",
+    "@mui/material": "^9.5.0",
+    "@mui/material-nextjs": "^9.5.0",
+    "@mui/stylis-plugin-rtl": "^9.5.0",
+    "@next/third-parties": "^16.4.2",
+    "next": "^16.4.2",
+    "next-intl": "^4.14.9",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-window": "^2.5.0",
+    "stylis": "^4.4.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.29.0",
-    "@next/eslint-plugin-next": "^15.3.4",
-    "@tailwindcss/postcss": "^4.1.10",
-    "@types/node": "^24.0.3",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.29.0",
-    "eslint-config-prettier": "^10.1.5",
+    "@eslint/js": "^10.0.1",
+    "@next/eslint-plugin-next": "^16.4.2",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/stylis": "^4.2.7",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-sort": "^4.0.0",
-    "postcss": "^8.5.6",
-    "postcss-import": "^16.1.1",
-    "tailwindcss": "^4.1.10",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.34.1"
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.72.0"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "pnpm@12.14.0"
 }

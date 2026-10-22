@@ -1,0 +1,69 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "Цифри",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "Латинські великі",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "Латинські малі",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "cyrillicUpper",
+      "label": "Великі (кирилиця)",
+      "chars": "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ"
+    },
+    {
+      "id": "cyrillicLower",
+      "label": "Малі (кирилиця)",
+      "chars": "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя"
+    },
+    {
+      "id": "symbols",
+      "label": "Символи",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}

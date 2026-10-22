@@ -1,0 +1,79 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "숫자",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "영문 대문자",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "영문 소문자",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "hangulJamo",
+      "label": "한글 자모",
+      "ranges": [
+        {
+          "from": 12593,
+          "to": 12643
+        }
+      ]
+    },
+    {
+      "id": "hangulSyllables",
+      "label": "한글 음절",
+      "ranges": [
+        {
+          "from": 44032,
+          "to": 55203
+        }
+      ]
+    },
+    {
+      "id": "symbols",
+      "label": "기호",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}

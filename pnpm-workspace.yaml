@@ -1,0 +1,7 @@
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+  sharp: true
+
+# pnpm 11以降の既定 (公開から24時間待つ) を無効にし、ローカルとVercelで挙動を揃える
+minimumReleaseAge: 0

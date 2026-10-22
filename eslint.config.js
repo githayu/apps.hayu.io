@@ -13,8 +13,10 @@ export default tseslint.config(
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       parserOptions: {
-        project: './tsconfig.json',
-        tsconfigRootDir: process.cwd(),
+        projectService: {
+          allowDefaultProject: ['*.js'],
+        },
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     plugins: {
@@ -25,7 +27,7 @@ export default tseslint.config(
     },
     settings: {
       react: {
-        version: 'detect',
+        version: '19.3',
       },
     },
     rules: {
@@ -57,6 +59,12 @@ export default tseslint.config(
   },
   prettierConfig,
   {
-    ignores: ['node_modules/**', '.next/**', 'out/**', 'eslint.config.js'],
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      'out/**',
+      'public/**',
+      'eslint.config.js',
+    ],
   }
 )

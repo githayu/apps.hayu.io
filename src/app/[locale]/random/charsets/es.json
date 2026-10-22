@@ -1,0 +1,67 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "Dígitos",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "Mayúsculas",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ],
+      "chars": "Ñ"
+    },
+    {
+      "id": "lower",
+      "label": "Minúsculas",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ],
+      "chars": "ñ"
+    },
+    {
+      "id": "accented",
+      "label": "Vocales acentuadas",
+      "chars": "ÁÉÍÓÚÜáéíóúü"
+    },
+    {
+      "id": "symbols",
+      "label": "Símbolos",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ],
+      "chars": "¡¿"
+    }
+  ]
+}

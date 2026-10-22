@@ -1,0 +1,83 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "الأرقام (0-9)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "الأحرف اللاتينية الكبيرة",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "الأحرف اللاتينية الصغيرة",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "arabicDigits",
+      "label": "الأرقام العربية الهندية",
+      "ranges": [
+        {
+          "from": 1632,
+          "to": 1641
+        }
+      ]
+    },
+    {
+      "id": "arabicLetters",
+      "label": "الحروف العربية",
+      "ranges": [
+        {
+          "from": 1569,
+          "to": 1594
+        },
+        {
+          "from": 1601,
+          "to": 1610
+        }
+      ]
+    },
+    {
+      "id": "symbols",
+      "label": "الرموز",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}

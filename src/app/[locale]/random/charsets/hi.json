@@ -1,0 +1,89 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "अंक (0-9)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "बड़े अक्षर (A-Z)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "छोटे अक्षर (a-z)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "devanagariDigits",
+      "label": "देवनागरी अंक",
+      "ranges": [
+        {
+          "from": 2406,
+          "to": 2415
+        }
+      ]
+    },
+    {
+      "id": "vowels",
+      "label": "स्वर",
+      "ranges": [
+        {
+          "from": 2309,
+          "to": 2324
+        }
+      ]
+    },
+    {
+      "id": "consonants",
+      "label": "व्यंजन",
+      "ranges": [
+        {
+          "from": 2325,
+          "to": 2361
+        }
+      ]
+    },
+    {
+      "id": "symbols",
+      "label": "चिह्न",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}

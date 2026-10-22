@@ -1,44 +1,63 @@
 'use client'
 
-import cx from 'classnames'
-import Link from 'next/link'
-import Script from 'next/script'
+import Box from '@mui/material/Box'
+import CssBaseline from '@mui/material/CssBaseline'
+import MuiLink from '@mui/material/Link'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
+import { Direction, ThemeProvider } from '@mui/material/styles'
+import Stack from '@mui/material/Stack'
+import rtlPlugin from '@mui/stylis-plugin-rtl'
+import Typography from '@mui/material/Typography'
 import React from 'react'
-import { useMode } from '../hooks'
+import { prefixer } from 'stylis'
+import { Link } from '../i18n/navigation'
+import { createAppTheme } from '../theme'
 
-export default function ClientLayout({ children }: React.PropsWithChildren) {
-  const [isDark] = useMode()
+type Props = React.PropsWithChildren<{
+  /** 文字を書く向き */
+  direction: Direction
+}>
+
+export default function ClientLayout({ children, direction }: Props) {
+  const theme = React.useMemo(() => createAppTheme(direction), [direction])
+  const isRtl = direction === 'rtl'
 
   return (
-    <>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-9MW6KE1DYC" />
-      <Script id="ga">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+    <AppRouterCacheProvider
+      options={{
+        key: isRtl ? 'muirtl' : 'mui',
+        stylisPlugins: isRtl ? [prefixer, rtlPlugin] : undefined,
+      }}
+    >
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
 
-          gtag('config', 'G-9MW6KE1DYC');
-        `}
-      </Script>
-      <Script
-        async
-        crossOrigin="anonymous"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3203287558334935"
-      />
+        <Stack sx={{ minHeight: '100dvh' }}>
+          <Box component="main" sx={{ flex: 1 }}>
+            {children}
+          </Box>
 
-      <body
-        className={cx('bg-gray-100 dark:bg-gray-800 min-h-screen', {
-          'bp5-dark': isDark,
-        })}
-      >
-        {children}
-
-        <footer className="text-center py-2">
-          © 2012-{new Date().getFullYear()}{' '}
-          <Link href="https://hayu.io">hayu.io</Link>
-        </footer>
-      </body>
-    </>
+          <Stack
+            component="footer"
+            direction="row"
+            spacing={2}
+            sx={{
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              py: 1,
+            }}
+            useFlexGap
+          >
+            <Typography component="span">
+              © 2012-{new Date().getFullYear()}{' '}
+              <MuiLink component={Link} href="/" underline="hover">
+                hayu.io
+              </MuiLink>
+            </Typography>
+          </Stack>
+        </Stack>
+      </ThemeProvider>
+    </AppRouterCacheProvider>
   )
 }

@@ -1,0 +1,74 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "ارقام (0-9)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "حروف بزرگ لاتین",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "حروف کوچک لاتین",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "persianDigits",
+      "label": "ارقام فارسی",
+      "ranges": [
+        {
+          "from": 1776,
+          "to": 1785
+        }
+      ]
+    },
+    {
+      "id": "persianLetters",
+      "label": "حروف فارسی",
+      "chars": "ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی"
+    },
+    {
+      "id": "symbols",
+      "label": "نمادها",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}

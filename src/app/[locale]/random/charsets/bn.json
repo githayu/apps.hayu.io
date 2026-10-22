@@ -1,0 +1,109 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "অঙ্ক (0-9)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "বড় হাতের অক্ষর (A-Z)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "ছোট হাতের অক্ষর (a-z)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "bengaliDigits",
+      "label": "বাংলা অঙ্ক",
+      "ranges": [
+        {
+          "from": 2534,
+          "to": 2543
+        }
+      ]
+    },
+    {
+      "id": "vowels",
+      "label": "স্বরবর্ণ",
+      "ranges": [
+        {
+          "from": 2437,
+          "to": 2444
+        },
+        {
+          "from": 2447,
+          "to": 2448
+        },
+        {
+          "from": 2451,
+          "to": 2452
+        }
+      ]
+    },
+    {
+      "id": "consonants",
+      "label": "ব্যঞ্জনবর্ণ",
+      "ranges": [
+        {
+          "from": 2453,
+          "to": 2472
+        },
+        {
+          "from": 2474,
+          "to": 2480
+        },
+        {
+          "from": 2482,
+          "to": 2482
+        },
+        {
+          "from": 2486,
+          "to": 2489
+        }
+      ]
+    },
+    {
+      "id": "symbols",
+      "label": "চিহ্ন",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}

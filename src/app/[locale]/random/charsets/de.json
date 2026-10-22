@@ -1,0 +1,64 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "Ziffern",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "Großbuchstaben",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "Kleinbuchstaben",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "umlauts",
+      "label": "Umlaute und ß",
+      "chars": "ÄÖÜäöüß"
+    },
+    {
+      "id": "symbols",
+      "label": "Sonderzeichen",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}

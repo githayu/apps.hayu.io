@@ -1,0 +1,89 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "数字",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "英字(大文字)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "英字(小文字)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "hiragana",
+      "label": "ひらがな",
+      "ranges": [
+        {
+          "from": 12353,
+          "to": 12438
+        }
+      ]
+    },
+    {
+      "id": "katakana",
+      "label": "カタカナ",
+      "ranges": [
+        {
+          "from": 12449,
+          "to": 12538
+        }
+      ]
+    },
+    {
+      "id": "halfwidthKana",
+      "label": "半角カナ",
+      "ranges": [
+        {
+          "from": 65382,
+          "to": 65437
+        }
+      ]
+    },
+    {
+      "id": "symbols",
+      "label": "記号",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}

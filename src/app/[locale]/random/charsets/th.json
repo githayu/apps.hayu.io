@@ -1,0 +1,79 @@
+{
+  "sets": [
+    {
+      "id": "digits",
+      "label": "ตัวเลข (0-9)",
+      "default": true,
+      "ranges": [
+        {
+          "from": 48,
+          "to": 57
+        }
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "อักษรละตินตัวใหญ่",
+      "default": true,
+      "ranges": [
+        {
+          "from": 65,
+          "to": 90
+        }
+      ]
+    },
+    {
+      "id": "lower",
+      "label": "อักษรละตินตัวเล็ก",
+      "default": true,
+      "ranges": [
+        {
+          "from": 97,
+          "to": 122
+        }
+      ]
+    },
+    {
+      "id": "thaiDigits",
+      "label": "เลขไทย",
+      "ranges": [
+        {
+          "from": 3664,
+          "to": 3673
+        }
+      ]
+    },
+    {
+      "id": "thaiConsonants",
+      "label": "พยัญชนะไทย",
+      "ranges": [
+        {
+          "from": 3585,
+          "to": 3630
+        }
+      ]
+    },
+    {
+      "id": "symbols",
+      "label": "สัญลักษณ์",
+      "ranges": [
+        {
+          "from": 33,
+          "to": 47
+        },
+        {
+          "from": 58,
+          "to": 64
+        },
+        {
+          "from": 91,
+          "to": 96
+        },
+        {
+          "from": 123,
+          "to": 126
+        }
+      ]
+    }
+  ]
+}
