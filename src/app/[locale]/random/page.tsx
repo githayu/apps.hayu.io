@@ -216,11 +216,14 @@ export default function RandomPage() {
             size="small"
             slotProps={{ htmlInput: { readOnly: true } }}
             sx={{
-              '& .MuiInputBase-root': { pr: 5 },
+              '& .MuiInputBase-root': { p: 0 },
               '& textarea': {
+                boxSizing: 'border-box',
                 fontFamily: 'monospace',
+                px: 1.75,
+                py: 1,
                 resize: { sm: 'both', xs: 'vertical' },
-                width: { sm: 186 },
+                width: { sm: 240 },
               },
               width: { sm: 'auto', xs: '100%' },
             }}
